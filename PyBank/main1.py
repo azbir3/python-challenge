@@ -30,24 +30,20 @@ with open(csvpath, newline='') as csvfile:
         total += int(row[1])
     print (f'Total : ${total}')
         
-# Step 3 - to calculate change in "Profit/Loss"
-with open(csvpath, newline='') as csvfile:
-    csvreader = csv.reader(csvfile, delimiter=',') # read the file
-    headerline = next(csvreader) # to skip the header
-    profits[] # to create a list of the values of profits
-    for i, n in enumerate(csvreader):
-        profits.append(int(n[1])) #to append data from col B to a list
-    change[] # to create a list of change in profits
-        for num in profits:
-            change.append([x[i+1]-x[i] for i in range(len(x)-1)] # to calculate change in profits and append to a list
- 
- 
-#max_increase = max(change) # to find max value
-#min_increase = min(change) # to find min value
-#print(f'Greatest Increase in Profits: ${max_increase}')
-#print(f'Greatest Decrease in Profits: ${min_increase}')
+# Step 3 - to calculate average change in "Profit/Loss"
 
-# Step 4 - to write Financial analysis to the csv file
+# Step 4 - to calculate greatest increase and decrease
+with open(csvpath, newline='') as csvfile:
+    csvreader = csv.reader(csvfile, delimiter=',')
+    headerline = next(csvreader) # to skip the header
+    Increase = [float(row(2)) for row in csvreader]
+
+max_increase = max(Increase) # to find max value
+min_increase = min(Increase) # to find min value
+print(f'Greatest Increase in Profits: ${max_increase}')
+print(f'Greatest Decrease in Profits: ${min_increase}')
+
+# Step 5 - to write Financial analysi to the csv file
 
 # specify the file to write to
 #output_path = os.path.join("..", "PyBank", "Financial_Analysis")
