@@ -34,12 +34,13 @@ with open(csvpath, newline='') as csvfile:
 with open(csvpath, newline='') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',') # read the file
     headerline = next(csvreader) # to skip the header
-    profits[] # to create a list of the values of profits
-    for i, n in enumerate(csvreader):
-        profits.append(int(n[1])) #to append data from col B to a list
-    change[] # to create a list of change in profits
-        for num in profits:
-            change.append([x[i+1]-x[i] for i in range(len(x)-1)] # to calculate change in profits and append to a list
+    profits=[] # to set up a list of the values of profits
+    for row in csvreader:
+        profits.append(int(row[1])) #to append data from col B to a list
+        #print(profits) - to check if data is being received - ok
+    change=[] # to create a list of change in profits
+    for i in profits:
+        change.append(for i in range(len(x)-1)) # to calculate change in profits and append to a list
  
  
 #max_increase = max(change) # to find max value
