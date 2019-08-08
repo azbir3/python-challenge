@@ -34,17 +34,21 @@ with open(csvpath, newline='') as csvfile:
         #print(candidates) 
     #to calculate and print out results for all candidates
     khanVotes=candidates.count('Khan')
-    khanprct=khanVotes/row_count
-    print("Khan: ", khanprct, khanVotes)
+    khanprct=(khanVotes/row_count)*100
+    print(f"Khan:  {khanprct:.3f}% ({khanVotes})\n")
+
     correyVotes=candidates.count('Correy')
-    correyprct=correyVotes/row_count
-    print("Correy: ", correyprct, correyVotes)
+    correyprct=(correyVotes/row_count)*100
+    print(f"Correy:  {correyprct:.3f}% ({correyVotes})\n")
+
     liVotes=candidates.count('Li')
-    liprct=liVotes/row_count
-    print("Li: ", liprct, liVotes)
+    liprct=(liVotes/row_count)*100
+    print(f"Li:  {liprct:.3f}% ({liVotes}\n")
+
     tooleyVotes=candidates.count("O'Tooley")
-    tooleyprct=liVotes/row_count
-    print("O'Tooley: ", tooleyprct, tooleyVotes)
+    tooleyprct=(liVotes/row_count)*100
+    print(f"O'Tooley:  {tooleyprct:.3f}% ({tooleyVotes})\n")
+
     print('___________________________________')
 
     # to determine and print out the winner
@@ -53,4 +57,17 @@ with open(csvpath, newline='') as csvfile:
     print('')
     print("Winner: ", max(winnerList))
     print('___________________________________') 
-    
+
+# Step 4 - to write Election Results to a text file
+# specify the file to write to
+output_path = os.path.join("..", "output", "Election_Results.txt")
+with open(output_path, 'w', newline='') as textfile:
+    x=(f"Election Results\n"
+    "---------------------\n"
+    " \n"
+    f"Total Votes : {row_count}\n"
+    f"Khan:  {khanprct:.3f}% ({khanVotes})\n"
+    f"Correy : {correyprct:.3f}% {correyVotes}\n"
+    f"Li : {liprct:.3f}% {liVotes}\n"
+    f"O'Tooley : {tooleyprct:.3f}% {tooleyVotes}\n")
+    textfile.write(x)

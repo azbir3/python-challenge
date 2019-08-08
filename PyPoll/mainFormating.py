@@ -34,17 +34,18 @@ with open(csvpath, newline='') as csvfile:
         #print(candidates) # checked = ok
     #to calculate and print out results for all candidates
     khanVotes=candidates.count('Khan')
-    khanprct=khanVotes/row_count
-    print("Khan: ", khanprct, khanVotes)
+    khanprct=(khanVotes/row_count)*100
+    print("Khan: {}%".format(round(khanprct, 5)), khanVotes)
+    print(f"Khan:  {khanprct:.3f}% ({khanVotes})\n")
     correyVotes=candidates.count('Correy')
-    correyprct=correyVotes/row_count
-    print("Correy: ", correyprct, correyVotes)
+    correyprct=(correyVotes/row_count)*100
+    print("Correy: {}%".format(round(correyprct, 3)), correyVotes)
     liVotes=candidates.count('Li')
-    liprct=liVotes/row_count
-    print("Li: ", liprct, liVotes)
+    liprct=(liVotes/row_count)*100
+    print("Li: {}%".format(round(liprct, 4)), liVotes)
     tooleyVotes=candidates.count("O'Tooley")
-    tooleyprct=liVotes/row_count
-    print("O'Tooley: ", tooleyprct, tooleyVotes)
+    tooleyprct=(tooleyVotes/row_count)*100
+    print("O'Tooley: {}%".format(round(tooleyprct, 1)), tooleyVotes)
     print('___________________________________')
 
     # to determine and print out the winner
@@ -58,3 +59,6 @@ with open(csvpath, newline='') as csvfile:
     #width=5
     #print(f'Khan: {khanprct:{width}.{precision}f}', khanVotes) 
     #print("Khan: " round(khanprct, 3), khanVotes)
+
+# to specify the file to write to
+output_path=os.path.join("..", "output", "election_results.csv")
