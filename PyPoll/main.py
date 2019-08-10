@@ -56,16 +56,12 @@ with open(csvpath, newline='') as csvfile:
     winner=max(winnerList) # to determine a winner vote
         #print(winnerList) # to ck printing of the list - ok
         #print(winner) # to ck if winner is calcualted correctly - ok
-    
+    winnerName=["Khan", "Correy", "Li", "O'Tolley"] #to create a list of candidate names
+    winnerPosition=winnerList.index(max(winnerList))
+    #print(winnerPosition)
+    winnerN=winnerName[winnerPosition]
     print('')
-    if winner == khanVotes:
-        print("Winner: Khan")
-    elif winner == correyVotes:
-        print("Winner: Correy")
-    elif winner == liVotes:
-        print("Winner: Li")
-    else:
-        print("Winner: O'Tolley")
+    print(f"Winner: {winnerN}")
     print('___________________________________') 
 
 # Step 4 - to write Election Results to a text file
@@ -73,15 +69,15 @@ with open(csvpath, newline='') as csvfile:
 output_path = os.path.join("..", "output", "Election_Results.txt")
 with open(output_path, 'w') as textfile:
     textfile.write("Election Results \n") # to write the headder
-    L = ["--------------------- \n", # to write separate lines row 66 - 76
+    L = ["---------------------------- \n", # to write separate lines row 66 - 76
     f"Total Votes : {row_count} \n",
-    "--------------------- \n",
+    "---------------------------- \n",
     f"Khan:  {khanprct:.3f}% ({khanVotes}) \n",
     f"Correy : {correyprct:.3f}% ({correyVotes}) \n",
     f"Li : {liprct:.3f}% ({liVotes}) \n",
     f"O'Tooley : {tooleyprct:.3f}% ({tooleyVotes}) \n",
-    "--------------------- \n",
-    f"Winner : {winner} \n",
-    "--------------------- \n"]
+    "---------------------------- \n",
+    f"Winner : {winnerN} \n",
+    "---------------------------- \n"]
     textfile.writelines(L)
     textfile.close()

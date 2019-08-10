@@ -47,32 +47,44 @@ with open(csvpath, newline='') as csvfile:
         # to calculate change in profits and append to a list
     change=[profits[i+1]-profits[i] for i in range(len(profits)-1)] 
     #print(change) #to check if change list is generated = successful 
+    maxIncrease_position=change.index(max(change)) # to find index position of the noted value
+    #print(maxIncrease_position) #to check if position is retreived
+    minIncrease_position=change.index(min(change)) # to find index position of the noted value
+    #print(minIncrease_position) #to check if position is retreived
+
+with open(csvpath, newline='') as csvfile:
+    csvreader = csv.reader(csvfile, delimiter=',') # read the file
+    headerline = next(csvreader) # to skip the header    
+    dates=[] # to set up a list for the dates of profits
+    for row in csvreader:
+        dates.append(str(row[0])) # to append data from col A to a list
+        #print(dates) # to check if data is being received - ok
+    dateOfIncrease=dates[(maxIncrease_position+1)]
+    dateOfDecrease=dates[(minIncrease_position)+1]
+    #print(dateOfDecrease, dateOfIncrease)
 
     #to calculate and print requested output
     average=round(sum(change)/(row_count -1), 2) # to find average value
     max_increase = max(change) # to find max value
     min_increase = min(change) # to find min value
+    
+    # to print analysis summary
     print(f'Average Change: ${average}')
-    print(f'Greatest Increase in Profits:(${max_increase})')
-    print(f'Greatest Decrease in Profits:(${min_increase})')
-
-    #if i in change
-
-
+    print(f'Greatest Increase in Profits: {dateOfIncrease} (${max_increase})')
+    print(f'Greatest Decrease in Profits: {dateOfDecrease} (${min_increase})')
 
 # Step 4 - to write Financial analysis to a text file
 # specify the file to write to
 output_path = os.path.join("..", "output", "Financial_Analysis.txt")
 with open(output_path, 'w') as textfile:
     textfile.write("Financial Analysis \n") # to write the headder
-    x = ("--------------------- \n", # to write separate lines row 68 - 74
+    x = ("-------------------------- \n", # to write separate lines row 68 - 74
     "\n",
     f"Total Month : {row_count} \n",
     f"Total : ${total} \n",
     f"Average Change: ${average} \n",
-    f"Greatest Increase in Profits: (${max_increase}) \n",
-    f"Greatest Decrease in Profits: (${min_increase}) \n")
+    f"Greatest Increase in Profits: {dateOfIncrease} (${max_increase}) \n",
+    f"Greatest Decrease in Profits: {dateOfDecrease} (${min_increase}) \n")
     
     textfile.writelines(x)
     textfile.close()
-    
