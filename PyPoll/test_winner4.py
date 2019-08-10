@@ -51,13 +51,13 @@ with open(csvpath, newline='') as csvfile:
 
     print('___________________________________')
 
- #Step - 3 - to determine and print out the winner
+#Step - 3 - to determine and print out the winner
     winnerList=[khanVotes, correyVotes, liVotes, tooleyVotes]
     winner=max(winnerList) # to determine a winner vote
         #print(winnerList) # to ck printing of the list - ok
         #print(winner) # to ck if winner is calcualted correctly - ok
     
-    print('')
+    print('') # works for determination of the winner name in bash, does not work for print to text file
     if winner == khanVotes:
         print("Winner: Khan")
     elif winner == correyVotes:
@@ -67,6 +67,16 @@ with open(csvpath, newline='') as csvfile:
     else:
         print("Winner: O'Tolley")
     print('___________________________________') 
+
+    #winnerName=[winner==winnerList for cand in winnerList]
+    #print(winnerName) # prints [False, False, False, False]
+    winnerName=["Khan", "Correy", "Li", "Tolley"]
+    winnerPosition = 0
+    for name in winnerList:
+        winnerVoteCount=0
+        if(winnerList>winnerPosition) then
+            winnerPosition=
+
 
 # Step 4 - to write Election Results to a text file
 # specify the file to write to

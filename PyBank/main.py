@@ -56,16 +56,23 @@ with open(csvpath, newline='') as csvfile:
     print(f'Greatest Increase in Profits:(${max_increase})')
     print(f'Greatest Decrease in Profits:(${min_increase})')
 
+    #if i in change
+
+
+
 # Step 4 - to write Financial analysis to a text file
 # specify the file to write to
 output_path = os.path.join("..", "output", "Financial_Analysis.txt")
-with open(output_path, 'w', newline='') as textfile:
-    x=(f"Financial Analysis\n"
-    "---------------------\n"
-    " \n"
-    f"Total Month : {row_count}\n"
-    f"Total : {total}\n"
-    f"Average Change: {average}\n"
-    f"Greatest Increase in Profits: {max_increase}\n"
-    f"Greatest Decrease in Profits: {min_increase}\n")
-    textfile.write(x)
+with open(output_path, 'w') as textfile:
+    textfile.write("Financial Analysis \n") # to write the headder
+    x = ("--------------------- \n", # to write separate lines row 68 - 74
+    "\n",
+    f"Total Month : {row_count} \n",
+    f"Total : ${total} \n",
+    f"Average Change: ${average} \n",
+    f"Greatest Increase in Profits: (${max_increase}) \n",
+    f"Greatest Decrease in Profits: (${min_increase}) \n")
+    
+    textfile.writelines(x)
+    textfile.close()
+    

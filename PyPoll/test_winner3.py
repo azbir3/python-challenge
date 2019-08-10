@@ -51,7 +51,7 @@ with open(csvpath, newline='') as csvfile:
 
     print('___________________________________')
 
- #Step - 3 - to determine and print out the winner
+#Step - 3 - to determine and print out the winner
     winnerList=[khanVotes, correyVotes, liVotes, tooleyVotes]
     winner=max(winnerList) # to determine a winner vote
         #print(winnerList) # to ck printing of the list - ok
